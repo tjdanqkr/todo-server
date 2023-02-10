@@ -4,8 +4,7 @@ import com.todo.dev.domain.request.SignUpRequest;
 import lombok.*;
 
 @Getter @ToString
-@AllArgsConstructor @NoArgsConstructor
-@RequiredArgsConstructor @Builder
+@AllArgsConstructor @NoArgsConstructor @Builder
 public class Members {
     private Integer id;
     private String member_id;
