@@ -1,10 +1,10 @@
 package com.todo.dev.domain.dto;
 
+import com.todo.dev.domain.request.SignUpRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.apache.ibatis.type.Alias;
 
 @Getter @ToString
 @AllArgsConstructor @NoArgsConstructor
@@ -15,4 +15,11 @@ public class Members {
     private String name;
     private String phone_number;
 
+    public Members(Integer id, SignUpRequest request){
+        this.id = id;
+        this.member_id = request.getMember_id();
+        this.member_pw = request.getMember_pw();
+        this.name = request.getName();
+        this.phone_number = request.getName();
+    }
 }
