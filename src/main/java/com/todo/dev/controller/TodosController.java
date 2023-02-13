@@ -3,6 +3,7 @@ package com.todo.dev.controller;
 import com.todo.dev.domain.dto.TodosPost;
 import com.todo.dev.domain.request.TodosPostRequest;
 import com.todo.dev.domain.response.HomeTodosResponse;
+import com.todo.dev.domain.response.MyTodosResponse;
 import com.todo.dev.security.SecurityService;
 import com.todo.dev.security.TokenRequired;
 import com.todo.dev.service.TodosService;
@@ -34,5 +35,9 @@ public class TodosController {
     @GetMapping("/home") @TokenRequired
     public List<HomeTodosResponse> homeTodos(){
         return todosService.homeTodos(securityService.parseToken(securityService.getToken()).getId());
+    }
+    @GetMapping("/my") @TokenRequired
+    public List<MyTodosResponse> myTodos(){
+        return todosService.myTodos(securityService.parseToken(securityService.getToken()).getId());
     }
 }
