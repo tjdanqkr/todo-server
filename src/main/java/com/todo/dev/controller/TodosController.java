@@ -1,5 +1,6 @@
 package com.todo.dev.controller;
 
+import com.todo.dev.domain.dto.FriendTodos;
 import com.todo.dev.domain.dto.TodosPost;
 import com.todo.dev.domain.request.TodosPostRequest;
 import com.todo.dev.domain.response.HomeTodosResponse;
@@ -39,5 +40,11 @@ public class TodosController {
     @GetMapping("/my") @TokenRequired
     public List<MyTodosResponse> myTodos(){
         return todosService.myTodos(securityService.parseToken(securityService.getToken()).getId());
+    }
+    
+    @GetMapping("/friend") @TokenRequired
+    public List<FriendTodos> getMyFriendTodos(){
+        Integer myId = securityService.parseToken(securityService.getToken()).getId();
+        return todosService.getFriendTodos(myId);
     }
 }
