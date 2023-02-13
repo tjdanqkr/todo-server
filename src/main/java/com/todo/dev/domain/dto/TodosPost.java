@@ -13,7 +13,7 @@ public class TodosPost {
     private String content;
     public Todos toDTO(){
         return Todos.builder()
-                .member_id(member_id)
+                .memberId(member_id)
                 .content(content)
                 .build();
     }

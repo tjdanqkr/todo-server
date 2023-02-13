@@ -44,11 +44,11 @@ class DevApplicationTests {
 	void builderTest(){
 		Members member = Members
 				.builder()
-				.member_pw("1234")
+				.memberPw("1234")
 				.id(1)
-				.member_id("park")
+				.memberId("park")
 				.name("park")
-				.phone_number("01022222222")
+				.phoneNumber("01022222222")
 				.build();
 		System.out.println(member.toString());
 	}
