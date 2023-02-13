@@ -1,12 +1,17 @@
 package com.todo.dev.controller;
 
+import com.todo.dev.domain.dto.Todos;
 import com.todo.dev.domain.dto.TodosPost;
 import com.todo.dev.domain.request.TodosPostRequest;
+import com.todo.dev.domain.response.HomeTodosResponse;
 import com.todo.dev.security.SecurityService;
 import com.todo.dev.security.TokenRequired;
 import com.todo.dev.service.TodosService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,5 +32,9 @@ public class TodosController {
         Integer memberId = securityService.parseToken(securityService.getToken()).getId();
         return todosService.checkTodo(id, memberId);
 
+    }
+    @GetMapping("/home") @TokenRequired
+    public List<HomeTodosResponse> homeTodos(){
+        return todosService.homeTodos(securityService.parseToken(securityService.getToken()).getId());
     }
 }
