@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/todos")
-@TokenRequired
 public class TodosController {
     private final TodosService todosService;
     private final SecurityService securityService;
-    @PostMapping
+    @PostMapping @TokenRequired
     public Integer postTodos(@RequestBody TodosPostRequest request){
         Integer memberId = securityService.parseToken(securityService.getToken()).getId();
         TodosPost todosPost = TodosPost.builder()
@@ -23,7 +22,7 @@ public class TodosController {
                 .build();
         return todosService.insertTodoService(todosPost);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") @TokenRequired
     public Integer checkTodos(@PathVariable("id") Integer id){
         Integer memberId = securityService.parseToken(securityService.getToken()).getId();
         return todosService.checkTodo(id, memberId);

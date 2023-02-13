@@ -22,7 +22,7 @@ public class SecurityAspect {
         HttpServletRequest request = requestAttributes.getRequest();
 
         String token = request.getHeader("authorization");
-        if(token==null || token.isBlank() || token.isEmpty())
+        if(token == null || token.isBlank() || token.isEmpty())
             throw new JwtException("token is null");
         if(securityService.parseToken(token).getId()==null)
             throw new JwtException("token err");
