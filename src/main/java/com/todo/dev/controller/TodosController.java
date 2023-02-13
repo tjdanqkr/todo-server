@@ -1,13 +1,11 @@
 package com.todo.dev.controller;
 
-import com.todo.dev.domain.dto.Todos;
 import com.todo.dev.domain.dto.TodosPost;
 import com.todo.dev.domain.request.TodosPostRequest;
 import com.todo.dev.domain.response.HomeTodosResponse;
 import com.todo.dev.security.SecurityService;
 import com.todo.dev.security.TokenRequired;
 import com.todo.dev.service.TodosService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
