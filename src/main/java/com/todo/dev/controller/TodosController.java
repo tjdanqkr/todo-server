@@ -6,10 +6,7 @@ import com.todo.dev.security.SecurityService;
 import com.todo.dev.security.TokenRequired;
 import com.todo.dev.service.TodosService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,5 +22,11 @@ public class TodosController {
                 .member_id(memberId).content(request.getContent())
                 .build();
         return todosService.insertTodoService(todosPost);
+    }
+    @PutMapping("/{id}")
+    public Integer checkTodos(@PathVariable("id") Integer id){
+        Integer memberId = securityService.parseToken(securityService.getToken()).getId();
+        return todosService.checkTodo(id, memberId);
+
     }
 }
